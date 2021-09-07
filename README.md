@@ -18,6 +18,7 @@ const auto add2 = partial::apply(add, 2);
 const auto five = add2(3);
 ```
 
+---
 
 ### Optional values with `Option`
 It exposes two variants, `Some(T)` and `None`.
