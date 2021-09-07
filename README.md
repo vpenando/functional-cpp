@@ -1,7 +1,7 @@
 # functional-cpp
 Header-only tools for functional programming in C++
 
-It provide the following features:
+It provides the following features:
 
 ---
 
