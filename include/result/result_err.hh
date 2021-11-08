@@ -12,9 +12,7 @@ namespace result {
     template<class T>
     class Err final {
     public:
-        explicit Err(T const& value):
-            _value(value)
-        {
+        explicit Err(T const& value): _value(value) {
         }
 
         inline bool is_ok() const noexcept {
@@ -42,7 +40,8 @@ namespace result {
     private:
         T _value;
     };
-}
+    
+} // namespace result
 
 template<class T>
 std::ostream& operator<<(std::ostream& stream, ::result::Err<T> const& err_value) {
