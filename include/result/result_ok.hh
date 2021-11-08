@@ -11,11 +11,8 @@ namespace result {
     //   Result<int, bool> result = result_ok; // Ok!
     template<class T>
     class Ok final {
-
     public:
-        explicit Ok(T const& value):
-            _value(value)
-        {
+        explicit Ok(T const& value): _value(value) {
         }
 
         inline bool is_ok() const noexcept {
@@ -44,7 +41,7 @@ namespace result {
         T _value;
     };
 
-}
+} // namespace result
 
 template<class T>
 std::ostream& operator<<(std::ostream& stream, ::result::Ok<T> const& ok_value) {
