@@ -7,7 +7,7 @@
 namespace result {
 
     // Ok is used to build a Result with a given OK value:
-    //   auto result_ok = Ok(42); // ResultOk<int>
+    //   auto result_ok = Ok(42); // Ok<int>
     //   Result<int, bool> result = result_ok; // Ok!
     template<class T>
     class Ok final {
