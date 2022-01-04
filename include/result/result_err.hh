@@ -7,7 +7,7 @@
 namespace result {
 
     // Err is used to build a Result with a given error value:
-    //   auto result_err = Err(false); // ResultErr<bool>
+    //   auto result_err = Err(false); // Err<bool>
     //   Result<int, bool> result = result_err; // Ok!
     template<class T>
     class Err final {
