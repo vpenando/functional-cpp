@@ -15,24 +15,29 @@ namespace result {
         explicit Err(T const& value): _value(value) {
         }
 
+        [[nodiscard]]
         inline bool is_ok() const noexcept {
             return false;
         }
 
+        [[nodiscard]]
         inline bool is_err() const noexcept {
             return true;
         }
 
+        [[nodiscard]]
         const T& value() const {
             return _value;
         }
 
         template<class _>
+        [[nodiscard]]
         const Err map(_) const {
             return *this;
         }
 
         template<class U>
+        [[nodiscard]]
         const Err<U> map_err(Mapper<T, U> const& mapper) const {
             return Err(mapper(value()));
         }
