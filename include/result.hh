@@ -41,15 +41,18 @@ namespace result {
         {
         }
 
+        [[nodiscard]]
         inline bool is_ok() const noexcept {
             return _result_ok.is_some();
         }
 
+        [[nodiscard]]
         inline bool is_err() const noexcept {
             return _result_err.is_some();
         }
 
         template<class U>
+        [[nodiscard]]
         const Result<U, TErr> map(Mapper<TOk, U> const& mapper) const {
             if (is_ok()) {
                 return Ok(_result_ok.map(mapper).value());
@@ -58,6 +61,7 @@ namespace result {
         }
 
         template<class U>
+        [[nodiscard]]
         const Result<TOk, U> map_err(Mapper<TErr, U> const& mapper) const {
             if (is_err()) {
                 return Err(_result_err.map(mapper).value());
@@ -65,10 +69,12 @@ namespace result {
             return Ok(_result_ok.value());
         }
 
+        [[nodiscard]]
         const TOk& value_or(TOk const& default_value) const {
             return _result_ok.value_or(default_value);
         }
 
+        [[nodiscard]]
         const TErr& error_or(TErr const& default_value) const {
             return _result_err.value_or(default_value);
         }
