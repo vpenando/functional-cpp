@@ -32,7 +32,7 @@ using option::None;
 const Option<int> some_opt = Some(42);
 const Option<int> none_opt = None;
 
-const auto mapped_opt = some_opt.map(Func1(x, x*2)); // Some(84)
+const auto mapped_opt = some_opt.map(Map(x, x*2)); // Some(84)
 
 const auto some_value = some_opt.value();
 const auto none_value = none_opt.value_or(42);
