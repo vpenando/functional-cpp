@@ -33,20 +33,24 @@ namespace option {
         //   Option<T> my_option = None;
         class None_t final {
         public:
+            [[nodiscard]]
             inline bool is_some() const noexcept {
                 return false;
             }
 
+            [[nodiscard]]
             inline bool is_none() const noexcept {
                 return true;
             }
 
             template<class T>
+            [[nodiscard]]
             T value_or(T const& default_value) const {
                 return default_value;
             }
 
             template<class Mapper>
+            [[nodiscard]]
             const None_t map(Mapper const&) const {
                 // Todo: static_assert that Mapper is callable
                 return *this;
@@ -79,15 +83,18 @@ namespace option {
     public:
         Option(::option::details::None_t) noexcept {}
 
+        [[nodiscard]]
         inline bool is_some() const noexcept {
             return _optional_value != nullptr;
         }
 
+        [[nodiscard]]
         inline bool is_none() const noexcept {
             return !is_some();
         }
 
         template<class U>
+        [[nodiscard]]
         const Option<U> map(Mapper<TValue, U> const& mapper) const {
             if (is_none()) {
                 return None;
@@ -97,11 +104,13 @@ namespace option {
             return Some(value);
         }
 
+        [[nodiscard]]
         const Value& value() const noexcept { // Note: OptionalValue::op* is noexcept
             assert(_optional_value != nullptr);
             return *_optional_value;
         }
 
+        [[nodiscard]]
         const Value& value_or(Value const& default_value) const {
             if (is_none()) {
                 return default_value;
